@@ -8,5 +8,10 @@
     <title>PhP Password</title>
 </head>
 <body>
+    <label for='psw_length'>Inserisci la lunghezza della password. Deve essere tra 5 e 10 caratteri</label>
+    <form action='./index.php' method='GET'>
+        <input name='psw_length' type='number' min='5' max='10'>
+        <button type="submit">Invia</button>
+    </form>
 </body>
 </html>
