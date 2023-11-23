@@ -1,16 +1,20 @@
 <?php
-$psw_length = $_GET['psw_length'];
+$psw_length = isset($_GET['psw_length']) ? $_GET['psw_length'] : null ;
 $psw_length_num = intval($psw_length);
 $string_letters = 'qwertyuiopasdfghjklzxcvbnm'; 
 $string_letters_up = 'ABCDEFGHIL';
 $string_numbers = '0123456789';
 $string_symbols = '&%£!?@ç'; 
 $psw = ''; 
+$msg= ''; 
 
 function getRandomNumber($min, $max) {
     $num = mt_rand($min, $max);
     return $num;
 };
+
+if ($psw_length_num > 5) {
+    $msg= 'Ecco la tua password!';
 
 
 //la password è minimo di 5 caratteri, deve contenere tutti e 4 i parametri almeno una volta
@@ -47,7 +51,11 @@ for($i=0; $i< $num_letters; $i ++) {
         $symbol = $string_symbols[$index];
         $psw .= $symbol;
     }; 
-
+} else if ( isset($_GET['psw_length']) === false) { 
+    $msg = 'Non hai ancora inserito la password';
+} else if ($psw_length_num < 5) {
+    $msg= 'Ops! qualcosa è andato storto.' ;
+}
 ?>
 
 <!DOCTYPE html>
@@ -63,8 +71,9 @@ for($i=0; $i< $num_letters; $i ++) {
         <input name='psw_length' type='number' min='5' max='10'>
         <button type="submit">Invia</button>
     </form>
-
-    <p>la tua password è 
+    
+    <p> <?= $msg ?> 
         <span> <?= $psw; ?> </span>
+    </p>
 </body>
 </html>
