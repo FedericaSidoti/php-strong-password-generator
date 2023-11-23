@@ -1,4 +1,25 @@
+<?php
+$psw_length = $_GET['psw_length'];
+$psw_length_num = intval($psw_length);
+var_dump($psw_length_num); 
+$string_letters = 'qwertyuiopasdfghjklzxcvbnm'; 
+$psw = ''; 
 
+function getRandomNumber($max, $min) {
+    $num = mt_rand($max, $min);
+    return $num;
+};
+
+
+for($i=0; $i< $psw_length_num; $i ++) {
+    $index= getRandomNumber(1, 26); 
+    $letter= $string_letters[$index]; 
+    $psw .= $letter; 
+}
+
+var_dump($psw)
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
