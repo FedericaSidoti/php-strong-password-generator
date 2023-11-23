@@ -12,12 +12,10 @@ function getRandomNumber($max, $min) {
 
 
 for($i=0; $i< $psw_length_num; $i ++) {
-    $index= getRandomNumber(1, 26); 
+    $index= getRandomNumber(0, 25); 
     $letter= $string_letters[$index]; 
     $psw .= $letter; 
-}
-
-var_dump($psw)
+};
 
 ?>
 
@@ -34,5 +32,9 @@ var_dump($psw)
         <input name='psw_length' type='number' min='5' max='10'>
         <button type="submit">Invia</button>
     </form>
+
+    <p>la tua password è 
+        <span> <?= $psw; ?> </span>
+    </p>
 </body>
 </html>
