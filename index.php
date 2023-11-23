@@ -3,7 +3,8 @@ $psw_length = $_GET['psw_length'];
 $psw_length_num = intval($psw_length);
 $string_letters = 'qwertyuiopasdfghjklzxcvbnm'; 
 $string_letters_up = 'ABCDEFGHIL';
-$string_numbers = '0123456789'; 
+$string_numbers = '0123456789';
+$string_symbols = '&%£!?@ç'; 
 $psw = ''; 
 
 function getRandomNumber($min, $max) {
@@ -13,7 +14,8 @@ function getRandomNumber($min, $max) {
 
 $num_letters = getRandomNumber(0,$psw_length_num); 
 $num_letters_up = getRandomNumber(0, ($psw_length_num - $num_letters)); 
-$num_numbers = $psw_length_num - ($num_letters + $num_letters_up);
+$num_symbols = getRandomNumber(0, $psw_length_num - ($num_letters_up + $num_letters));
+$num_numbers = $psw_length_num - ($num_letters + $num_letters_up + $num_symbols);
 
 
 for($i=0; $i< $num_letters; $i ++) {
@@ -22,22 +24,23 @@ for($i=0; $i< $num_letters; $i ++) {
     $psw .= $letter; 
 };
 
-if ($num_letters !== $psw_length_num) {
     for($i=0; $i < $num_letters_up; $i ++){
         $index= getRandomNumber(0, 9);
         $letter_up = $string_letters_up[$index];
         $psw .= $letter_up;
     };
-};
 
-
-if (($num_letters_up + $num_letters) !== $psw_length_num) {
     for($i= 0; $i < $num_numbers; $i ++) {
         $index= getRandomNumber(0, 9);
         $number = $string_numbers[$index];
         $psw .= $number;
-    }
-}
+    }; 
+
+    for($i= 0; $i < $num_symbols; $i ++) {
+        $index= getRandomNumber(0, 6);
+        $symbol = $string_symbols[$index];
+        $psw .= $symbol;
+    }; 
 
 ?>
 
