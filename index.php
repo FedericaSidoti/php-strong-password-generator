@@ -12,10 +12,10 @@ function getRandomNumber($min, $max) {
     return $num;
 };
 
-$num_letters = getRandomNumber(0,$psw_length_num); 
-$num_letters_up = getRandomNumber(0, ($psw_length_num - $num_letters)); 
-$num_symbols = getRandomNumber(0, $psw_length_num - ($num_letters_up + $num_letters));
-$num_numbers = $psw_length_num - ($num_letters + $num_letters_up + $num_symbols);
+$num_letters = getRandomNumber(1,($psw_length_num -4)); 
+$num_letters_up = getRandomNumber(1, (($psw_length_num -3) - $num_letters)); 
+$num_symbols = getRandomNumber(1, ($psw_length_num -2) - ($num_letters_up + $num_letters));
+$num_numbers = ($psw_length_num -1) - ($num_letters + $num_letters_up + $num_symbols);
 
 
 for($i=0; $i< $num_letters; $i ++) {
