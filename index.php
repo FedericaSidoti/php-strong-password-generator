@@ -12,10 +12,16 @@ function getRandomNumber($min, $max) {
     return $num;
 };
 
-$num_letters = getRandomNumber(1,($psw_length_num -4)); 
-$num_letters_up = getRandomNumber(1, (($psw_length_num -3) - $num_letters)); 
-$num_symbols = getRandomNumber(1, ($psw_length_num -2) - ($num_letters_up + $num_letters));
-$num_numbers = ($psw_length_num -1) - ($num_letters + $num_letters_up + $num_symbols);
+
+//la password è minimo di 5 caratteri, deve contenere tutti e 4 i parametri almeno una volta
+//il primo parametro può comparire al massimo lungezzaPassword - 3, perchè deve lasciare lo spazio ad almeno 1 carattere per ogni parametro rimanente
+$num_letters = getRandomNumber(1,($psw_length_num -3)); 
+//il secondo parametro può comparire al massimo lunghezzaPassword -2, perchè deve lasciare spazio agli altri 2 parametri
+$num_letters_up = getRandomNumber(1, (($psw_length_num -2) - $num_letters)); 
+//terzo parametro: lunghezzpassword - 1
+$num_symbols = getRandomNumber(1, ($psw_length_num -1) - ($num_letters_up + $num_letters));
+//qui arriviamo fino alla lunghezza completa della password
+$num_numbers = $psw_length_num - ($num_letters + $num_letters_up + $num_symbols);
 
 
 for($i=0; $i< $num_letters; $i ++) {
