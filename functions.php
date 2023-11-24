@@ -5,7 +5,7 @@ $psw_length_num = intval($psw_length);
 $string_letters = 'qwertyuiopasdfghjklzxcvbnm'; 
 $string_letters_up = 'ABCDEFGHIL';
 $string_numbers = '0123456789';
-$string_symbols = '&%£!?@ç'; 
+$string_symbols = '&%(!?@)'; 
 $psw = ''; 
 $msg= ''; 
 
